@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ugntu.WordTemplates", "Ugntu.WordTemplates\Ugntu.WordTemplates.csproj", "{C31BCF1A-DDB3-4E3A-A853-EB10D0B19F69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{80B11B7E-44CE-414B-88DF-2CB548A52947}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C31BCF1A-DDB3-4E3A-A853-EB10D0B19F69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C31BCF1A-DDB3-4E3A-A853-EB10D0B19F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C31BCF1A-DDB3-4E3A-A853-EB10D0B19F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C31BCF1A-DDB3-4E3A-A853-EB10D0B19F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80B11B7E-44CE-414B-88DF-2CB548A52947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B11B7E-44CE-414B-88DF-2CB548A52947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80B11B7E-44CE-414B-88DF-2CB548A52947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80B11B7E-44CE-414B-88DF-2CB548A52947}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

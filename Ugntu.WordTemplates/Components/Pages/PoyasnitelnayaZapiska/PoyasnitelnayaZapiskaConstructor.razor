@@ -1,0 +1,22 @@
+﻿@page "/PoyasnitelnayaZapiskaConstructor"
+@using Ugntu.WordTemplates.Core
+@inject IWordReplacer WordReplacer
+
+<RadzenText TextStyle="TextStyle.H1" Text="Конструктор пояснительной записки."></RadzenText>
+<RadzenCard Style="max-width: 420px">
+    <RadzenStack>
+        <RadzenFormField Text="Студент">
+            <RadzenTextBox @bind-Value=@_studentName></RadzenTextBox>
+        </RadzenFormField>
+        <RadzenButton Click=ConstructDocument Text="Сформировать документ"></RadzenButton>
+    </RadzenStack>
+</RadzenCard>
+
+@code {
+    private string _studentName { get; set; } = string.Empty;
+
+    private void ConstructDocument(MouseEventArgs args)
+    {
+        WordReplacer.Replace("poyasnitelnaya-zapiska.docx.template", new Dictionary<string, string>() { { "#student", _studentName } });
+    }
+}
