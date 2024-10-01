@@ -7,17 +7,28 @@ public class WordReplacer : IWordReplacer
     public byte[] Replace(string fileName, IDictionary<string, string> replaceDictionary)
     {
         var filePath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Templates", fileName);
-        
+
         var WordApp = new Microsoft.Office.Interop.Word.Application();
-        var WordDoc = WordApp.Documents.Open(filePath);
-        
-        FindAndReplace(WordApp, replaceDictionary.First().Key, replaceDictionary.First().Value);
-        WordDoc.SaveAs(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "TeplateOutput",
-            fileName.Replace(".template", "")));
+        try
+        {
+            var WordDoc = WordApp.Documents.Open(filePath);
+
+            foreach (var replacedWord in replaceDictionary)
+            {
+                FindAndReplace(WordApp, replacedWord.Key, replacedWord.Value);
+            }
+
+            WordDoc.SaveAs2(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "TemplateOutput",
+                fileName.Replace(".template", "")));
+        }
+        finally
+        {
+            WordApp.Quit();
+        }
 
         return Array.Empty<byte>();
     }
-    
+
     private void FindAndReplace(Microsoft.Office.Interop.Word.Application doc, object findText, object replaceWithText)
     {
         //options
@@ -38,7 +49,8 @@ public class WordReplacer : IWordReplacer
         object wrap = 1;
         //execute find and replace
         doc.Selection.Find.Execute(ref findText, ref matchCase, ref matchWholeWord,
-            ref matchWildCards, ref matchSoundsLike, ref matchAllWordForms, ref forward, ref wrap, ref format, ref replaceWithText, ref replace,
-            ref matchKashida ,ref matchDiacritics, ref matchAlefHamza, ref matchControl);                
+            ref matchWildCards, ref matchSoundsLike, ref matchAllWordForms, ref forward, ref wrap, ref format,
+            ref replaceWithText, ref replace,
+            ref matchKashida, ref matchDiacritics, ref matchAlefHamza, ref matchControl);
     }
 }
