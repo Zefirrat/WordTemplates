@@ -15,11 +15,11 @@ public class WordReplacer : IWordReplacer
 
             foreach (var replacedWord in replaceDictionary)
             {
-                FindAndReplace(WordApp, replacedWord.Key, replacedWord.Value);
+                FindAndReplace(WordApp, $"#{replacedWord.Key}", replacedWord.Value);
             }
 
             WordDoc.SaveAs2(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "TemplateOutput",
-                fileName.Replace(".template", "")));
+                fileName.Replace(".template", "").Replace(".doc", $"{DateTime.Now:yyyyMMddHHmmss}.doc")));
         }
         finally
         {
