@@ -63,6 +63,9 @@
             <RadzenFormField Text="Год">
                 <RadzenTextBox @bind-Value=@_dictionary["Год"]></RadzenTextBox>
             </RadzenFormField>
+            <RadzenFormField Text="Тело документа">
+                <RadzenTextArea @bind-Value=@_dictionary["markdown_body"]></RadzenTextArea>
+            </RadzenFormField>
             <RadzenButton Click=ConstructDocument Text="Сформировать документ"></RadzenButton>
         </RadzenStack>
     </RadzenCard>
@@ -89,6 +92,7 @@
         { "Нормоконтролер", "Кузьмина А.Д." },
         { "Город", "Уфа" },
         { "Год", "2024" },
+        { "markdown_body", "Тело документа (markdown)" },
     };
 
 

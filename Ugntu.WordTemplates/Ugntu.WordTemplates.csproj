@@ -37,6 +37,9 @@
       <None Update="images\preview_2.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="Templates\poyasnitelnaya-zapiska-v2.docx.template">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

@@ -1,28 +1,45 @@
 ﻿using IronWord;
+using Microsoft.Office.Interop.Word;
 
 namespace Ugntu.WordTemplates.Core;
 
 public class WordReplacer : IWordReplacer
 {
+    
     public byte[] Replace(string fileName, IDictionary<string, string> replaceDictionary)
     {
         var filePath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Templates", fileName);
 
-        var WordApp = new Microsoft.Office.Interop.Word.Application();
+        Application WordApp = null;
+        Document? WordDoc = null;
         try
         {
-            var WordDoc = WordApp.Documents.Open(filePath);
+            WordApp = new Microsoft.Office.Interop.Word.Application();
+            WordDoc = WordApp.Documents.Open(filePath);
+            var markdownToWordConverter = new MarkdownToWordConverter();
 
             foreach (var replacedWord in replaceDictionary)
             {
-                FindAndReplace(WordApp, $"#{replacedWord.Key}", replacedWord.Value);
+                if (replacedWord.Key.StartsWith("markdown"))
+                {
+                    markdownToWordConverter.ConvertMarkdownToWord(replacedWord.Value, WordApp, WordDoc, replacedWord.Key);
+                }
+                else
+                {
+                    FindAndReplace(WordApp, $"#{replacedWord.Key}", replacedWord.Value);
+                }
             }
 
-            WordDoc.SaveAs2(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "TemplateOutput",
-                fileName.Replace(".template", "").Replace(".doc", $"{DateTime.Now:yyyyMMddHHmmss}.doc")));
+
+            WordDoc.SaveAs2(
+                System.IO.Path.Combine(
+                    System.IO.Directory.GetCurrentDirectory(),
+                    "TemplateOutput",
+                    fileName.Replace(".template", "").Replace(".doc", $"{DateTime.Now:yyyyMMddHHmmss}.doc")));
         }
         finally
         {
+            WordDoc.Close();
             WordApp.Quit();
         }
 
@@ -48,9 +65,21 @@ public class WordReplacer : IWordReplacer
         object replace = 2;
         object wrap = 1;
         //execute find and replace
-        doc.Selection.Find.Execute(ref findText, ref matchCase, ref matchWholeWord,
-            ref matchWildCards, ref matchSoundsLike, ref matchAllWordForms, ref forward, ref wrap, ref format,
-            ref replaceWithText, ref replace,
-            ref matchKashida, ref matchDiacritics, ref matchAlefHamza, ref matchControl);
+        doc.Selection.Find.Execute(
+            ref findText,
+            ref matchCase,
+            ref matchWholeWord,
+            ref matchWildCards,
+            ref matchSoundsLike,
+            ref matchAllWordForms,
+            ref forward,
+            ref wrap,
+            ref format,
+            ref replaceWithText,
+            ref replace,
+            ref matchKashida,
+            ref matchDiacritics,
+            ref matchAlefHamza,
+            ref matchControl);
     }
 }
