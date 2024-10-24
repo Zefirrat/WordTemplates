@@ -39,8 +39,8 @@ public class WordReplacer : IWordReplacer
         }
         finally
         {
-            WordDoc.Close();
-            WordApp.Quit();
+            WordDoc?.Close();
+            WordApp?.Quit();
         }
 
         return Array.Empty<byte>();

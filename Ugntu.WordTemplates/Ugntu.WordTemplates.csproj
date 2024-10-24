@@ -40,6 +40,12 @@
       <None Update="Templates\poyasnitelnaya-zapiska-v2.docx.template">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="Templates\poyasnitelnaya-zapiska-v3.docx.template.docx">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Templates\poyasnitelnaya-zapiska-v3.docx.template">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

@@ -63,8 +63,17 @@
             <RadzenFormField Text="Год">
                 <RadzenTextBox @bind-Value=@_dictionary["Год"]></RadzenTextBox>
             </RadzenFormField>
-            <RadzenFormField Text="Тело документа">
+            <RadzenFormField Text="Введение">
                 <RadzenTextArea @bind-Value=@_dictionary["markdown_body"]></RadzenTextArea>
+            </RadzenFormField>
+            <RadzenFormField Text="Содержание">
+                <RadzenTextArea @bind-Value=@_dictionary["markdown_summary"]></RadzenTextArea>
+            </RadzenFormField>
+            <RadzenFormField Text="Основной текст">
+                <RadzenTextArea @bind-Value=@_dictionary["markdown_body_2"]></RadzenTextArea>
+            </RadzenFormField>
+            <RadzenFormField Text="Список литературы">
+                <RadzenTextArea @bind-Value=@_dictionary["markdown_summary_literature"]></RadzenTextArea>
             </RadzenFormField>
             <RadzenButton Click=ConstructDocument Text="Сформировать документ"></RadzenButton>
         </RadzenStack>
@@ -92,7 +101,10 @@
         { "Нормоконтролер", "Кузьмина А.Д." },
         { "Город", "Уфа" },
         { "Год", "2024" },
-        { "markdown_body", "Тело документа (markdown)" },
+        { "markdown_body", "Введение (markdown)" },
+        { "markdown_body_2", "Основной текст (markdown)" },
+        { "markdown_summary", "Содержание (markdown)" },
+        { "markdown_summary_literature", "Список литературы (markdown)" },
     };
 
 
@@ -101,7 +113,7 @@
 
     private void ConstructDocument(MouseEventArgs args)
     {
-        WordReplacer.Replace("poyasnitelnaya-zapiska-v2.docx.template", _dictionary);
+        WordReplacer.Replace("poyasnitelnaya-zapiska-v3.docx.template", _dictionary);
     }
 
 }
