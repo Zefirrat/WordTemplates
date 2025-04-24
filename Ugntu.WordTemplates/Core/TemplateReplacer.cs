@@ -13,7 +13,7 @@ public class TemplateReplacer(IDocumentEngine documentEngine) : ITemplateReplace
 
     public byte[] Replace(string templateName, IDictionary<string, string> replaceDictionary)
     {
-        throw new NotImplementedException();
+        return Templates.Single(t => string.Equals(templateName, t.Name)).Replace(replaceDictionary);
     }
 
     public string[] GetAvailableTemplates(string templateName)

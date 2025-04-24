@@ -4,7 +4,7 @@ namespace Ugntu.WordTemplates.Core;
 
 public class ExplanatoryNoteTemplate(IDocumentEngine documentEngine) : TemplateBase(
         "Пояснительная записка",
-        "poyasnitelnaya-zapiska-v3.docx.template")
+        "poyasnitelnaya-zapiska-v3.docx.template", documentEngine)
 {
     public override IEnumerable<TemplateParameter> TemplateParameters => new List<TemplateParameter>
     {
