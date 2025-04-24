@@ -10,7 +10,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 builder.Services.AddRadzenComponents();
-builder.Services.AddTransient<IWordReplacer, WordReplacer>();
+builder.Services.AddTransient<ITemplateReplacer, TemplateReplacer>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
