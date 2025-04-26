@@ -1,23 +1,22 @@
-﻿using Microsoft.Office.Interop.Word;
-using Ugntu.WordTemplates.Core.Engines;
+﻿using Ugntu.WordTemplates.Core.Core.Engines;
 
-namespace Ugntu.WordTemplates.Core;
+namespace Ugntu.WordTemplates.Core.Core.TemplatesCore;
 
-public abstract class TemplateBase(string Name, string FileName, IDocumentEngine documentEngine) : ITemplate
+public abstract class TemplateBase(string name, string fileName, IDocumentEngine documentEngine) : ITemplate
 {
-    public string Name { get; }
-    public string FileName { get; }
+    public string Name { get; } = name;
+    public string FileName { get; } = fileName;
 
     public abstract IEnumerable<TemplateParameter> TemplateParameters { get; }
 
-    public byte[] Replace(IDictionary<string, string> replaceDictionary)
+    public async Task<byte[]> Replace(IDictionary<string, string> replaceDictionary)
     {
         var filePath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Templates", FileName);
 
         bool success;
         try
         {
-            success = documentEngine.Replace(filePath, FileName, replaceDictionary);
+            success = await documentEngine.Replace(filePath, FileName, replaceDictionary);
         }
         catch (Exception e)
         {

@@ -11,7 +11,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
+      <PackageReference Include="HtmlToOpenXml.dll" Version="3.2.5" />
       <PackageReference Include="IronWord" Version="2024.9.1" />
+      <PackageReference Include="Markdig" Version="0.41.0" />
       <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.8" />
       <PackageReference Include="Microsoft.Office.Interop.Word" Version="15.0.4797.1004" />
       <PackageReference Include="Radzen.Blazor" Version="5.2.5" />
@@ -27,23 +30,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="images\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Update="images\preview_1.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
       <None Update="images\preview_2.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="Templates\poyasnitelnaya-zapiska-v2.docx.template">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="Templates\poyasnitelnaya-zapiska-v3.docx.template.docx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Templates\poyasnitelnaya-zapiska-v3.docx.template">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

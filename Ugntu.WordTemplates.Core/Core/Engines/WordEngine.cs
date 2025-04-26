@@ -1,15 +1,11 @@
 ﻿using Microsoft.Office.Interop.Word;
+using Task = System.Threading.Tasks.Task;
 
-namespace Ugntu.WordTemplates.Core.Engines;
-
-public interface IDocumentEngine
-{
-    bool Replace(string templateFilePath, string finalFileName, IDictionary<string, string> parameters);
-}
+namespace Ugntu.WordTemplates.Core.Core.Engines;
 
 public class WordEngine : IDocumentEngine
 {
-    public bool Replace(string templateFilePath, string finalFileName, IDictionary<string, string> parameters)
+    public Task<bool> Replace(string templateFilePath, string finalFileName, IDictionary<string, string> parameters)
     {
         Application WordApp = null;
         Document? WordDoc = null;
@@ -50,7 +46,7 @@ public class WordEngine : IDocumentEngine
             WordApp?.Quit();
         }
 
-        return true;
+        return Task.FromResult(true);
     }
 
     private void FindAndReplace(Microsoft.Office.Interop.Word.Application doc, object findText, object replaceWithText)

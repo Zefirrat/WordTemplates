@@ -1,0 +1,19 @@
+﻿services:
+  ugntu.wordtemplates.api:
+    image: ugntu.wordtemplates.api
+    build:
+      context: .
+      dockerfile: Ugntu.WordTemplates.Api/Dockerfile
+
+  ugntu.wordtemplates.api-1:
+    image: ugntu.wordtemplates.api-1
+    build:
+      context: .
+      dockerfile: Ugntu.WordTemplates.Api/Dockerfile
+
+  ugntu.wordtemplates.api-2:
+    image: ugntu.wordtemplates.api-2
+    build:
+      context: .
+      dockerfile: Ugntu.WordTemplates.Api/Dockerfile
+

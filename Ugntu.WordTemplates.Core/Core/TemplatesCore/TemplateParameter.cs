@@ -1,4 +1,4 @@
-namespace Ugntu.WordTemplates.Core;
+namespace Ugntu.WordTemplates.Core.Core.TemplatesCore;
 
 public class TemplateParameter
 {

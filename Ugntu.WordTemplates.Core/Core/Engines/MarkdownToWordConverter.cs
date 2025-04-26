@@ -2,7 +2,7 @@
 using Microsoft.Office.Interop.Word;
 using Range = Microsoft.Office.Interop.Word.Range;
 
-namespace Ugntu.WordTemplates.Core;
+namespace Ugntu.WordTemplates.Core.Core.Engines;
 
 class MarkdownToWordConverter
 {

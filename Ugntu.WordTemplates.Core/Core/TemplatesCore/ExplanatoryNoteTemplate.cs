@@ -1,6 +1,6 @@
-﻿using Ugntu.WordTemplates.Core.Engines;
+﻿using Ugntu.WordTemplates.Core.Core.Engines;
 
-namespace Ugntu.WordTemplates.Core;
+namespace Ugntu.WordTemplates.Core.Core.TemplatesCore;
 
 public class ExplanatoryNoteTemplate(IDocumentEngine documentEngine) : TemplateBase(
         "Пояснительная записка",
